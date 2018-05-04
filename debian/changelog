@@ -1,4 +1,4 @@
-etcd (0-0) UNRELEASED; urgency=medium
+kubernetes (0-0) UNRELEASED; urgency=medium
 
   * create v1.10.2 for xenial.
 
