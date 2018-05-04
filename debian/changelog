@@ -1,0 +1,5 @@
+etcd (0-0) UNRELEASED; urgency=medium
+
+  * create v1.10.2 for xenial.
+
+ -- Jessica Toscani <jessica@exoscale.ch>  Fri, 4 May 2018 15:55:00 +0200

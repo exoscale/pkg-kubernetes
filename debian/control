@@ -1,0 +1,11 @@
+Source: kubernetes
+Maintainer: Jessica Toscani <jessica@exoscale.ch>
+Build-Depends: debhelper (>= 9),
+               wget, ca-certificates, lsb-release,
+               dh-systemd,
+               zip
+
+Package: etcd
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Production-Grade Container Scheduling and Management

@@ -1,0 +1,25 @@
+#!/usr/bin/make -f
+
+DISTRIBUTION = $(shell lsb_release -sc)
+VERSION = 1.10.2
+PACKAGEVERSION = $(VERSION)-0~$(DISTRIBUTION)1
+TARBALL = kubernetes.tar.gz
+URL = https://github.com/kubernetes/kubernetes/releases/download/v$(VERSION)/$(TARBALL)
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	wget -N --progress=dot:mega $(URL)
+	tar --strip-components=1 -xf $(TARBALL)
+  KUBERNETES_SKIP_CONFIRM="yes" ./cluster/get-kube-binaries.sh
+  tar --strip-components=1 -xf server/kubernetes-server-linux-amd64.tar.gz
+  
+
+override_dh_link:
+
+
+override_dh_gencontrol:
+	dh_gencontrol -- -v$(PACKAGEVERSION)
+
+override_dh_strip_nondeterminism:

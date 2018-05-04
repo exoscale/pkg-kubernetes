@@ -1,0 +1,6 @@
+server/bin/kubelet usr/bin
+server/bin/kubectl usr/bin
+server/bin/kube-proxy usr/bin
+server/bin/kube-apiserver usr/bin
+server/bin/kube-controller-manager usr/bin
+server/bin/kube-scheduler usr/bin
