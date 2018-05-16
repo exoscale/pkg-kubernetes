@@ -1,2 +1,2 @@
-var/lib/kubelet/
-var/log/kubelet/
+var/lib/kubernetes/
+var/log/kubernetes/
