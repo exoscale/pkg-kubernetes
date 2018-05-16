@@ -5,7 +5,7 @@ Build-Depends: debhelper (>= 9),
                dh-systemd,
                zip
 
-Package: etcd
+Package: kubernetes
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends},
          adduser
