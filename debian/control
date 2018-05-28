@@ -5,8 +5,14 @@ Build-Depends: debhelper (>= 9),
                dh-systemd,
                zip
 
-Package: kubernetes
+Package: kubernetes-master
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends},
          adduser
-Description: Production-Grade Container Scheduling and Management
+Description: Kubernetes Master Components - Cluster's control plane
+
+Package: kubernetes-node
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends},
+         adduser
+Description: Kubernetes Node Components - Kubernetes runtime environment
