@@ -3,3 +3,9 @@ kubernetes (0.0-0) UNRELEASED; urgency=medium
   * create v1.10.2 for xenial.
 
  -- Jessica Toscani <jessica@exoscale.ch>  Fri, 4 May 2018 15:55:00 +0200
+
+ kubernetes (0.0-1) UNRELEASED; urgency=medium
+
+   * update to 1.12.3
+
+  -- Jessica Toscani <jessica@exoscale.ch>  Wed, Dec 12 16:11:42 CET 2018 +0200
