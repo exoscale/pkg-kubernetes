@@ -15,3 +15,9 @@ kubernetes (0.0-0) UNRELEASED; urgency=medium
     * update to 1.12.4
 
    -- Jessica Toscani <jessica@exoscale.ch>  Tue Dec 18 15:17:01 CET 2018 +0200
+
+  kubernetes (0.0-3) UNRELEASED; urgency=medium
+
+    * update to 1.14.0
+
+   -- Alessandro Ratti <alessandro@exoscale.ch> Mon May 06 15:17:01 CET 2018 +0200
