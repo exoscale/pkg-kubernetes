@@ -1,6 +1,5 @@
 #!/usr/bin/make -f
 
-DISTRIBUTION = $(shell lsb_release -sc)
 VERSION = 1.14.1
 PACKAGEVERSION = $(VERSION)-0
 TARBALL = kubernetes.tar.gz
