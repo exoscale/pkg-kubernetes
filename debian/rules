@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 
 VERSION = 1.15.0
-PACKAGEVERSION = $(VERSION)-0
+PACKAGEVERSION = $(VERSION)-1
 TARBALL = kubernetes.tar.gz
 URL = https://github.com/kubernetes/kubernetes/releases/download/v$(VERSION)/$(TARBALL)
 
@@ -13,7 +13,8 @@ override_dh_auto_build:
 	tar --strip-components=1 -xf $(TARBALL)
 	KUBERNETES_SKIP_CONFIRM=YES ./cluster/get-kube-binaries.sh
 	tar --strip-components=1 -xf server/kubernetes-server-linux-amd64.tar.gz
-
+	mkdir bash_completion.d
+  server/bin/kubectl completion bash >  bash_completion.d/kubectl
 override_dh_link:
 
 override_dh_gencontrol:
