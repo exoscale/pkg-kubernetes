@@ -14,7 +14,7 @@ override_dh_auto_build:
 	KUBERNETES_SKIP_CONFIRM=YES ./cluster/get-kube-binaries.sh
 	tar --strip-components=1 -xf server/kubernetes-server-linux-amd64.tar.gz
 	mkdir bash_completion.d
-  server/bin/kubectl completion bash >  bash_completion.d/kubectl
+	server/bin/kubectl completion bash >  bash_completion.d/kubectl
 override_dh_link:
 
 override_dh_gencontrol:
