@@ -1,0 +1,2 @@
+server/bin/kubectl usr/bin
+bash_completion.d/kubectl etc/bash_completion.d
