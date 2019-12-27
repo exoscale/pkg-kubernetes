@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 
 VERSION = 1.15.6
-PACKAGEVERSION = $(VERSION)-1
+PACKAGEVERSION = $(VERSION)-2
 TARBALL = kubernetes.tar.gz
 URL = https://github.com/kubernetes/kubernetes/releases/download/v$(VERSION)/$(TARBALL)
 
