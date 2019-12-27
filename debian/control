@@ -16,3 +16,9 @@ Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends},
          adduser
 Description: Kubernetes Node Components - Kubernetes runtime environment
+
+Package: kubectl
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends},
+         adduser
+Description: Kubernetes Command line client
