@@ -11,11 +11,11 @@ Depends: ${misc:Depends}, ${shlibs:Depends},
          adduser
 Description: Kubernetes Master Components - Cluster's control plane
 
-Package: kubernetes-node
+Package: kubelet
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends},
          adduser
-Description: Kubernetes Node Components - Kubernetes runtime environment
+Description: Kubernetes Node Components - kubelet
 
 Package: kubectl
 Architecture: any
