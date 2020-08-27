@@ -1,3 +1,9 @@
+kubernetes (0.0-8) UNRELEASED; urgency=medium
+
+  * Package v1.19.0
+
+-- Jessica Toscani <jessica@exoscale.ch> Thu Aug 27 06:50:00 CET 2020 +0200
+
 kubernetes (0.0-7) UNRELEASED; urgency=medium
 
   * Package v1.19.0-rc.3
