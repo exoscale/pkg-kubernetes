@@ -5,6 +5,7 @@
   notifempty
   compress
   delaycompress
+  sharedscripts
   postrotate
     invoke-rc.d kube-apiserver reload >/dev/null 2>&1 || true
     invoke-rc.d kube-controller-manager reload >/dev/null 2>&1 || true

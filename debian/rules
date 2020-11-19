@@ -12,7 +12,7 @@ TARBALL_VERSION = $(DEB_VERSION_UPSTREAM)
 TARBALL_URL = https://github.com/kubernetes/kubernetes/releases/download/v$(TARBALL_VERSION)/$(TARBALL)
 
 %:
-	dh $@ --with=systemd
+	dh $@ --with=systemd,bash-completion
 
 DOWNLOAD_INSTALLER := ./download/cluster/get-kube-binaries.sh
 $(DOWNLOAD_INSTALLER):
@@ -30,13 +30,6 @@ $(DOWNLOAD_TARBALL): $(DOWNLOAD_INSTALLER)
 override_dh_auto_build: $(DOWNLOAD_TARBALL)
 	tar -xf "${DOWNLOAD_TARBALL}"
 	kubernetes/server/bin/kubectl completion bash > kubectl.bash_completion
-
-override_dh_install:
-	dh_install
-	dh_bash-completion
-
-override_dh_installlogrotate:
-	dh_installlogrotate --name=kubernetes
 
 # Restarting any Kubernetes component is something we want to do manually
 override_dh_systemd_start:
