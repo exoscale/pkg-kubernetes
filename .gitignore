@@ -1,0 +1,25 @@
+# Ignore temporary/backup files
+*#
+*~
+semantic.cache
+
+# Ignore Debian packaging resources
+/debian/debhelper-build-stamp
+/debian/files
+/debian/*.debhelper
+/debian/*.debhelper.log
+/debian/*.substvars
+# ... packaging folders
+/debian/tmp
+/debian/kube-common
+/debian/kube-apiserver
+/debian/kube-controller-manager
+/debian/kube-scheduler
+/debian/kubelet
+/debian/kubectl
+/debian/kubernetes-master
+# ... built resources
+/download
+/kubernetes
+/kubectl.bash_completion
+

@@ -1,0 +1,60 @@
+## Kubernetes API Server service configuration
+#  REF: https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+#  NOTE: use uppercased/underscored environment variable corresponding to any option;
+#        example given: --bind-address -> BIND_ADDRESS
+
+# Uncomment to enable
+#KUBE_APISERVER_ENABLE=true
+
+# Bind address/port
+BIND_ADDRESS='0.0.0.0'
+SECURE_PORT=6443
+
+# TLS/SSL
+TLS_MIN_VERSION='VersionTLS13'
+TLS_CERT_FILE='/etc/kubernetes/apiserver/ssl/cert+chain.pem'
+TLS_PRIVATE_KEY_FILE='/etc/kubernetes/apiserver/ssl/key.pem'
+ROOT_CA_FILE='/etc/kubernetes/ssl/api-cas.pem'
+CLIENT_CA_FILE='/etc/kubernetes/apiserver/ssl/client-cas.pem'
+# <-> ETCD
+ETCD_CAFILE='/etc/kubernetes/apiserver/ssl/etcd-cas.pem'
+ETCD_CERTFILE='/etc/kubernetes/apiserver/ssl/cert.pem'
+ETCD_KEYFILE='/etc/kubernetes/apiserver/ssl/key.pem'
+# <-> Kubelet
+KUBELET_CERTIFICATE_AUTHORITY='/etc/kubernetes/apiserver/ssl/kubelet-cas.pem'
+KUBELET_CLIENT_CERTIFICATE='/etc/kubernetes/apiserver/ssl/cert.pem'
+KUBELET_CLIENT_KEY='/etc/kubernetes/apiserver/ssl/key.pem'
+# <-> Aggregation
+REQUESTHEADER_CLIENT_CA_FILE='/etc/kubernetes/apiserver/ssl/aggregation-cas.pem'
+# <-> Proxy
+PROXY_CLIENT_CERT_FILE='/etc/kubernetes/apiserver/ssl/cert.pem'
+PROXY_CLIENT_KEY_FILE='/etc/kubernetes/apiserver/ssl/key.pem'
+
+# Kubeconfig
+AUTHENTICATION_KUBECONFIG='/etc/kubernetes/apiserver/kubeconfig'
+AUTHORIZATION_KUBECONFIG='/etc/kubernetes/apiserver/kubeconfig'
+
+# ETCD
+ETCD_PREFIX='/kubernetes'
+ETCD_SERVERS='https://127.0.0.1:2379'
+
+# Service account
+SERVICE_ACCOUNT_KEY_FILE='/etc/kubernetes/ssl/service-account-key.pem'
+
+# Features
+RUNTIME_CONFIG='api/all=true'
+#ENABLE_ADMISSION_PLUGINS='NodeRestriction,PodSecurityPolicy'
+
+# Security
+AUTHORIZATION_MODE='Node,RBAC'
+ENCRYPTION_PROVIDER_CONFIG='/etc/kubernetes/apiserver/encryption-config.yaml'
+
+# Networking
+KUBELET_PREFERRED_ADDRESS_TYPES='Hostname,InternalDNS,ExternalDNS'
+ENABLE_AGGREGATOR_ROUTING=true
+SERVICE_CLUSTER_IP_RANGE='198.51.100.0/24'
+SERVICE_NODE_PORT_RANGE='30000-32767'
+
+# Logging
+VERBOSITY=1
+

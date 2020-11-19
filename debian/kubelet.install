@@ -1,3 +1,2 @@
-server/bin/kubelet usr/bin
-server/bin/kubectl usr/bin
-bash_completion.d/kubectl etc/bash_completion.d
+kubernetes/server/bin/kubelet usr/bin
+helpers/kubelet.launcher usr/bin

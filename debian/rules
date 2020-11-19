@@ -1,23 +1,50 @@
 #!/usr/bin/make -f
+#export DH_VERBOSE=1
 
-VERSION = 1.19.3
-PACKAGEVERSION = $(VERSION)-0
+# Versioning
+include /usr/share/dpkg/pkg-info.mk
+export OS_CODENAME := $(shell lsb_release -sc)
+export EXOSCALE_VERSION := $(DEB_VERSION)~$(OS_CODENAME)
+
+# Source
 TARBALL = kubernetes.tar.gz
-URL = https://github.com/kubernetes/kubernetes/releases/download/v$(VERSION)/$(TARBALL)
+TARBALL_VERSION = $(DEB_VERSION_UPSTREAM)
+TARBALL_URL = https://github.com/kubernetes/kubernetes/releases/download/v$(TARBALL_VERSION)/$(TARBALL)
 
 %:
-	dh $@
+	dh $@ --with=systemd
 
-override_dh_auto_build:
-	wget -N --progress=dot:mega $(URL)
-	tar --strip-components=1 -xf $(TARBALL)
-	KUBERNETES_SKIP_CONFIRM=YES ./cluster/get-kube-binaries.sh
-	tar --strip-components=1 -xf server/kubernetes-server-linux-amd64.tar.gz
-	mkdir bash_completion.d
-	server/bin/kubectl completion bash >  bash_completion.d/kubectl
-override_dh_link:
+DOWNLOAD_INSTALLER := ./download/cluster/get-kube-binaries.sh
+$(DOWNLOAD_INSTALLER):
+	mkdir -p ./download
+	wget --progress=dot:mega "$(TARBALL_URL)" -O "./download/$(TARBALL)"
+	tar -C ./download --strip-components=1 -xf "./download/$(TARBALL)"
+
+DOWNLOAD_TARBALL := ./download/server/kubernetes-server-linux-$(DEB_BUILD_ARCH).tar.gz
+$(DOWNLOAD_TARBALL): $(DOWNLOAD_INSTALLER)
+	KUBERNETES_SERVER_ARCH=$(DEB_BUILD_ARCH) \
+	KUBERNETES_CLIENT_ARCH=$(DEB_BUILD_ARCH) \
+	KUBERNETES_SKIP_CONFIRM=YES \
+	${DOWNLOAD_INSTALLER}
+
+override_dh_auto_build: $(DOWNLOAD_TARBALL)
+	tar -xf "${DOWNLOAD_TARBALL}"
+	kubernetes/server/bin/kubectl completion bash > kubectl.bash_completion
+
+override_dh_install:
+	dh_install
+	dh_bash-completion
+
+override_dh_installlogrotate:
+	dh_installlogrotate --name=kubernetes
+
+# Restarting any Kubernetes component is something we want to do manually
+override_dh_systemd_start:
+	dh_systemd_start --no-restart-after-upgrade --no-restart-on-upgrade
 
 override_dh_gencontrol:
-	dh_gencontrol -- -v$(PACKAGEVERSION)
+	dh_gencontrol -- -v$(EXOSCALE_VERSION)
 
-override_dh_strip_nondeterminism:
+override_dh_clean:
+	dh_clean
+	rm -rf ./kubernetes kubectl.bash_completion

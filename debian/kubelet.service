@@ -1,0 +1,21 @@
+[Unit]
+Description="Kubernetes Kubelet"
+Requires=network-online.target docker.service
+After=network-online.target docker.service
+ConditionFileNotEmpty=/etc/kubernetes/kubelet/config.yaml
+StartLimitIntervalSec=60
+StartLimitBurst=3
+
+[Service]
+EnvironmentFile=/etc/default/kubelet
+ExecCondition=/usr/bin/test -n "$KUBELET_ENABLE"
+ExecStart=/usr/bin/kubelet.launcher
+ExecReload=/bin/kill --signal HUP $MAINPID
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=60
+LimitNOFILE=65536
+LimitMEMLOCK=infinity
+
+[Install]
+WantedBy=multi-user.target

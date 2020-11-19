@@ -1,0 +1,35 @@
+#!/bin/sh
+set -e
+
+NAME="kube"
+GROUP=$NAME
+USER=$NAME
+DATADIR="/var/lib/kubernetes"
+
+case "$1" in
+  configure)
+    # TODO: as per Debian Policy 4.5.0:
+    #   When maintainers choose a new hardcoded or dynamically generated
+    #   username for packages to use, they should start this username with
+    #   an underscore
+    #   [requires --force-badname depending on OS]
+    USER="kube"
+    adduser \
+      --gecos 'Kubernetes (daemons) account' \
+      --system --quiet \
+      --disabled-login \
+      --shell /bin/false \
+      --home /var/lib/kubernetes  --no-create-home \
+      --group \
+      --force-badname ${USER}
+
+    # (created by kube-common.dirs)
+    chmod 2770 /var/log/kubernetes
+    chown $USER:adm /var/log/kubernetes
+    chmod 2770 /var/lib/kubernetes
+    chown $USER: /var/lib/kubernetes
+    ;;
+esac
+
+#DEBHELPER#
+

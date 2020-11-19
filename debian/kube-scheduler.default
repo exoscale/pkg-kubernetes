@@ -1,0 +1,25 @@
+## Kubernetes Scheduler service configuration
+#  REF: https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/
+#  NOTE: use uppercased/underscored environment variable corresponding to any option;
+#        example given: --bind-address -> BIND_ADDRESS
+
+# Uncomment to enable
+#KUBE_SCHEDULER=true
+
+# Bind address/port
+BIND_ADDRESS='127.0.0.1'
+SECURE_PORT=10259
+
+# TLS/SSL
+TLS_MIN_VERSION='VersionTLS13'
+TLS_CERT_FILE='/etc/kubernetes/scheduler/ssl/cert+chain.pem'
+TLS_PRIVATE_KEY_FILE='/etc/kubernetes/scheduler/ssl/key.pem'
+CLIENT_CA_FILE='/etc/kubernetes/scheduler/ssl/client-cas.pem'
+
+# Kubeconfig
+AUTHENTICATION_KUBECONFIG='/etc/kubernetes/scheduler/kubeconfig'
+AUTHORIZATION_KUBECONFIG='/etc/kubernetes/scheduler/kubeconfig'
+
+# Logging
+VERBOSITY=1
+

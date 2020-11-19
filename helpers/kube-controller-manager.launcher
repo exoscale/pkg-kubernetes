@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+## Controller-Manager service
+
+# Options
+# REF: https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/
+: ${VERBOSITY:=0}
+OPTIONS=
+
+# Flags
+for o in $(/usr/bin/kube-controller-manager --help 2>/dev/null | sed -nE 's|^\s*--(\S+)\s{2,}.*$|\1|p') \
+; do
+  e="${o^^}"; e="${e//-/_}"
+  [ -z "${!e}" ] && continue
+  OPTIONS="${OPTIONS} --${o}"
+done
+
+# Arguments
+for o in $(/usr/bin/kube-controller-manager --help 2>/dev/null | sed -nE 's|^\s*--(\S+)\s\S.*$|\1|p') \
+; do
+  e="${o^^}"; e="${e//-/_}"
+  [ -z "${!e}" ] && continue
+  v="${!e}"
+  OPTIONS="${OPTIONS} --${o}=${v}"
+done
+
+# Exec
+exec /usr/bin/kube-controller-manager ${OPTIONS} ${OTHER_OPTIONS} --v ${VERBOSITY}

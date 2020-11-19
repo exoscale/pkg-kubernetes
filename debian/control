@@ -1,24 +1,44 @@
 Source: kubernetes
-Maintainer: Jessica Toscani <jessica@exoscale.ch>
-Build-Depends: debhelper (>= 9),
-               wget, ca-certificates, lsb-release,
-               dh-systemd,
-               zip
+Section: admin
+Priority: optional
+Maintainer: Exoscale <support@exoscale.com>
+Build-Depends: debhelper (>= 9), dh-systemd, lsb-release, bash-completion,
+               wget, ca-certificates, zip
+Homepage: https://kubernetes.io/
 
-Package: kubernetes-master
+Package: kube-common
+Architecture: all
+Description: Kubernetes - common resources
+
+Package: kube-apiserver
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends},
-         adduser
-Description: Kubernetes Master Components - Cluster's control plane
+Depends: kube-common (= ${binary:Version})
+Description: Kubernetes Master Components - API Server
+
+Package: kube-controller-manager
+Architecture: any
+Depends: kube-common (= ${binary:Version})
+Description: Kubernetes Master Components - Controller-Manager
+
+Package: kube-scheduler
+Architecture: any
+Depends: kube-common (= ${binary:Version})
+Description: Kubernetes Master Components - Scheduler
 
 Package: kubelet
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends},
-         adduser
+Depends: ${misc:Depends}, ${shlibs:Depends}, kubectl (= ${binary:Version}), kube-common (= ${binary:Version})
 Description: Kubernetes Node Components - kubelet
 
 Package: kubectl
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends},
-         adduser
-Description: Kubernetes Command line client
+Conflicts: kubelet (<< 1.19.3-0+exo1), kubernetes-master (<< 1.19.3-0+exo1)
+Description: Kubernetes command-line client
+
+Package: kubernetes-master
+Architecture: all
+Depends: kube-apiserver (= ${binary:Version}),
+         kube-controller-manager (= ${binary:Version}),
+         kube-scheduler (= ${binary:Version}),
+         kubectl (= ${binary:Version})
+Description: Kubernetes Master Components - Full Control Plane

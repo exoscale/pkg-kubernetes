@@ -1,0 +1,14 @@
+/var/log/kubernetes/*.log {
+  daily
+  rotate 31
+  missingok
+  notifempty
+  compress
+  delaycompress
+  postrotate
+    invoke-rc.d kube-apiserver reload >/dev/null 2>&1 || true
+    invoke-rc.d kube-controller-manager reload >/dev/null 2>&1 || true
+    invoke-rc.d kube-scheduler reload >/dev/null 2>&1 || true
+    invoke-rc.d kubelet reload >/dev/null 2>&1 || true
+  endscript
+}
