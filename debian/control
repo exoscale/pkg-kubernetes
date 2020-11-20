@@ -1,7 +1,7 @@
 Source: kubernetes
 Section: admin
 Priority: optional
-Maintainer: Exoscale <support@exoscale.com>
+Maintainer: Exoscale <ops@exoscale.com>
 Build-Depends: debhelper (>= 9), dh-systemd, lsb-release, bash-completion,
                wget, ca-certificates, zip
 Homepage: https://kubernetes.io/
