@@ -1,0 +1,31 @@
+## Kubernetes Kubelet service configuration
+#  REF: https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/
+#  NOTE: use uppercased/underscored environment variable corresponding to any option;
+#        example given: --bootstrap-kubeconfig -> BOOTSTRAP_KUBECONFIG
+
+# Uncomment to enable
+#KUBELET_ENABLE=true
+
+# Configuration file
+CONFIG='/etc/kubernetes/kubelet/config.yaml'
+
+# Node IP address and hostname
+#NODE_IP=
+#HOSTNAME_OVERRIDE=
+
+# Kubeconfig
+#BOOTSTRAP_KUBECONFIG=
+KUBECONFIG='/etc/kubernetes/kubelet/kubeconfig'
+REGISTER_NODE=true
+
+# Networking
+#NETWORK_PLUGIN=
+#CNI_BIN_DIR='/opt/cni/bin'
+#CNI_CONF_DIR='/etc/cni/net.d'
+
+# Other options (key/values)
+#OTHER_OPTIONS=
+
+# Logging
+VERBOSITY=1
+

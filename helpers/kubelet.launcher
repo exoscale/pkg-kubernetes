@@ -1,0 +1,205 @@
+#!/usr/bin/env bash
+
+## Kubelet service
+
+# Options
+# REF: https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/
+: ${VERBOSITY:=0}
+OPTIONS=
+
+# Flags
+# $ /usr/bin/kubelet --help 2>/dev/null | sed -nE 's|^\s*--(\S+)\s{2,}.*$|  \1 \\|p' | sort
+for o in \
+  add-dir-header \
+  alsologtostderr \
+  anonymous-auth \
+  authentication-token-webhook \
+  cgroups-per-qos \
+  contention-profiling \
+  cpu-cfs-quota \
+  docker-only \
+  docker-tls \
+  enable-cadvisor-json-endpoints \
+  enable-controller-attach-detach \
+  enable-debugging-handlers \
+  enable-load-reader \
+  enable-server \
+  exit-on-lock-contention \
+  experimental-allocatable-ignore-eviction \
+  experimental-check-node-capabilities-before-mount \
+  experimental-kernel-memcg-notification \
+  fail-swap-on \
+  keep-terminated-pod-volumes \
+  kernel-memcg-notification \
+  log-cadvisor-usage \
+  logtostderr \
+  make-iptables-util-chains \
+  protect-kernel-defaults \
+  really-crash-for-testing \
+  redirect-container-streaming \
+  register-node \
+  register-schedulable \
+  rotate-certificates \
+  rotate-server-certificates \
+  runonce \
+  serialize-image-pulls \
+  skip-headers \
+  skip-log-headers \
+  storage-driver-secure \
+; do
+  e="${o^^}"; e="${e//-/_}"
+  [ -z "${!e}" ] && continue
+  OPTIONS="${OPTIONS} --${o}"
+done
+
+# Arguments
+# $ /usr/bin/kubelet --help 2>/dev/null | sed -nE 's|^\s*--(\S+)\s\S.*$|  \1 \\|p' | sort
+for o in \
+  address \
+  allowed-unsafe-sysctls \
+  application-metrics-count-limit \
+  authentication-token-webhook-cache-ttl \
+  authorization-mode \
+  authorization-webhook-cache-authorized-ttl \
+  authorization-webhook-cache-unauthorized-ttl \
+  azure-container-registry-config \
+  boot-id-file \
+  bootstrap-kubeconfig \
+  cert-dir \
+  cgroup-driver \
+  cgroup-root \
+  chaos-chance \
+  client-ca-file \
+  cloud-config \
+  cloud-provider \
+  cluster-dns \
+  cluster-domain \
+  cni-bin-dir \
+  cni-cache-dir \
+  cni-conf-dir \
+  config \
+  container-hints \
+  container-log-max-files \
+  container-log-max-size \
+  container-runtime \
+  container-runtime-endpoint \
+  containerd \
+  cpu-cfs-quota-period \
+  cpu-manager-policy \
+  cpu-manager-reconcile-period \
+  docker \
+  docker-endpoint \
+  docker-env-metadata-whitelist \
+  docker-root \
+  docker-tls-ca \
+  docker-tls-cert \
+  docker-tls-key \
+  dynamic-config-dir \
+  enforce-node-allocatable \
+  event-burst \
+  event-qps \
+  event-storage-age-limit \
+  event-storage-event-limit \
+  eviction-hard \
+  eviction-max-pod-grace-period \
+  eviction-minimum-reclaim \
+  eviction-pressure-transition-period \
+  eviction-soft \
+  eviction-soft-grace-period \
+  experimental-bootstrap-kubeconfig \
+  experimental-mounter-path \
+  feature-gates \
+  file-check-frequency \
+  global-housekeeping-interval \
+  hairpin-mode \
+  healthz-bind-address \
+  healthz-port \
+  hostname-override \
+  housekeeping-interval \
+  http-check-frequency \
+  image-gc-high-threshold \
+  image-gc-low-threshold \
+  image-pull-progress-deadline \
+  image-service-endpoint \
+  iptables-drop-bit \
+  iptables-masquerade-bit \
+  kube-api-burst \
+  kube-api-content-type \
+  kube-api-qps \
+  kube-reserved \
+  kube-reserved-cgroup \
+  kubeconfig \
+  kubelet-cgroups \
+  lock-file \
+  log-backtrace-at \
+  log-dir \
+  log-file \
+  log-file-max-size \
+  log-flush-frequency \
+  logging-format \
+  machine-id-file \
+  manifest-url \
+  manifest-url-header \
+  master-service-namespace \
+  max-open-files \
+  max-pods \
+  maximum-dead-containers \
+  maximum-dead-containers-per-container \
+  minimum-container-ttl-duration \
+  minimum-image-ttl-duration \
+  network-plugin \
+  network-plugin-mtu \
+  node-ip \
+  node-labels \
+  node-status-max-images \
+  node-status-update-frequency \
+  non-masquerade-cidr \
+  oom-score-adj \
+  pod-cidr \
+  pod-infra-container-image \
+  pod-manifest-path \
+  pod-max-pids \
+  pods-per-core \
+  port \
+  provider-id \
+  qos-reserved \
+  read-only-port \
+  register-with-taints \
+  registry-burst \
+  registry-qps \
+  reserved-cpus \
+  resolv-conf \
+  root-dir \
+  runtime-cgroups \
+  runtime-request-timeout \
+  seccomp-profile-root \
+  stderrthreshold \
+  storage-driver-buffer-duration \
+  storage-driver-db \
+  storage-driver-host \
+  storage-driver-password \
+  storage-driver-table \
+  storage-driver-user \
+  streaming-connection-idle-timeout \
+  sync-frequency \
+  system-cgroups \
+  system-reserved \
+  system-reserved-cgroup \
+  tls-cert-file \
+  tls-cipher-suites \
+  tls-min-version \
+  tls-private-key-file \
+  topology-manager-policy \
+  version \
+  vmodule \
+  volume-plugin-dir \
+  volume-stats-agg-period \
+; do
+  e="${o^^}"; e="${e//-/_}"
+  [ -z "${!e}" ] && continue
+  v="${!e}"
+  OPTIONS="${OPTIONS} --${o}=${v}"
+done
+
+# Exec
+exec /usr/bin/kubelet ${OPTIONS} ${OTHER_OPTIONS} --v ${VERBOSITY}

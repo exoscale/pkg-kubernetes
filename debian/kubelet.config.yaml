@@ -1,0 +1,59 @@
+---
+## Kubernetes Kubelet service startup configuration
+#  REFs:
+#  - https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/
+#  - https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/kubelet/config/v1beta1/types.go
+
+apiVersion: kubelet.config.k8s.io/v1beta1
+kind: KubeletConfiguration
+
+# Bind address
+address: "0.0.0.0"
+port: 10250
+
+# TLS/SSL
+tlsMinVersion: "VersionTLS13"
+tlsCertFile: "/etc/kubernetes/kubelet/ssl/cert+chain.pem"
+tlsPrivateKeyFile: "/etc/kubernetes/kubelet/ssl/key.pem"
+
+# Cluster
+clusterDomain: "kubernetes.kube.example.org"
+clusterDNS: ["192.0.2.53"]
+
+# Authentication
+authentication:
+  anonymous:
+    enabled: false
+  webhook:
+    enabled: true
+  x509:
+    clientCAFile: "/etc/kubernetes/kubelet/ssl/client-cas.pem"
+
+# Authorization
+authorization:
+  mode: "Webhook"
+
+# Features
+featureGates:
+  CPUManager: true
+
+# Kubelet runtime
+systemReserved:
+  cpu: "100m"
+  memory: "100Mi"
+kubeReserved:
+  cpu: "100m"
+  memory: "100Mi"
+  ephemeral-storage: "1Gi"
+runtimeRequestTimeout: "15m"
+
+# Container runtime
+cgroupDriver: "systemd"
+
+# Network runtime
+hairpinMode: "hairpin-veth"
+
+# Logging
+logging:
+  format: "json"
+

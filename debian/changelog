@@ -1,65 +1,65 @@
+kubernetes (1.19.4-0+exo1) UNRELEASED; urgency=medium
+
+  * debian: packaging v2
+
+ -- Cédric Dufour <cedric.dufour@exoscale.ch>  Thu, 19 Nov 2020 11:45:03 +0100
+
 kubernetes (0.0-9) UNRELEASED; urgency=medium
 
   * Package v1.19.3
 
--- Jessica Toscani <jessica@exoscale.ch> Thu Oct 15 11:50:00 CET 2020 +0200
-
+ -- Jessica Toscani <jessica@exoscale.ch>  Thu, 15 Oct 2020 11:50:00 +0200
 
 kubernetes (0.0-8) UNRELEASED; urgency=medium
 
   * Package v1.19.0
 
--- Jessica Toscani <jessica@exoscale.ch> Thu Aug 27 06:50:00 CET 2020 +0200
+ -- Jessica Toscani <jessica@exoscale.ch>  Thu, 27 Aug 2020 06:50:00 +0200
 
 kubernetes (0.0-7) UNRELEASED; urgency=medium
 
   * Package v1.19.0-rc.3
 
--- Jessica Toscani <jessica@exoscale.ch> Thu Jul 30 13:00:01 CET 2020 +0200
+ -- Jessica Toscani <jessica@exoscale.ch>  Thu, 30 Jul 2020 13:00:01 +0200
 
 kubernetes (0.0-6) UNRELEASED; urgency=medium
 
   * Package v1.19.0-rc.1
 
--- Jessica Toscani <jessica@exoscale.ch> Wed Jul 15 13:00:01 CET 2020 +0200
+ -- Jessica Toscani <jessica@exoscale.ch>  Wed, 15 Jul 2020 13:00:01 +0200
 
 kubernetes (0.0-5) UNRELEASED; urgency=medium
 
   * update to 1.15.10
 
--- Jessica Toscani <jessica@exoscale.ch> Wed Feb 12 16:54:01 CET 2020 +0200
+ -- Jessica Toscani <jessica@exoscale.ch>  Wed, 12 Feb 2020 16:54:01 +0200
 
 kubernetes (0.0-4) UNRELEASED; urgency=medium
 
   * update to 1.15.6
 
--- Jessica Toscani <jessica@exoscale.ch> Tue Nov 26 11:54:01 CET 2019 +0200
+ -- Jessica Toscani <jessica@exoscale.ch>  Tue, 26 Nov 2019 11:54:01 +0200
 
 kubernetes (0.0-3) UNRELEASED; urgency=medium
 
   * update to 1.14.0
 
-  -- Alessandro Ratti <alessandro@exoscale.ch> Mon May 06 15:17:01 CET 2018 +0200
+ -- Alessandro Ratti <alessandro@exoscale.ch>  Mon, 06 May 2018 15:17:01 +0200
+
 kubernetes (0.0-2) UNRELEASED; urgency=medium
 
   * update to 1.12.4
 
-  -- Jessica Toscani <jessica@exoscale.ch>  Tue Dec 18 15:17:01 CET 2018 +0200
+ -- Jessica Toscani <jessica@exoscale.ch>  Tue, 18 Dec 2018 15:17:01 +0200
 
- kubernetes (0.0-1) UNRELEASED; urgency=medium
+kubernetes (0.0-1) UNRELEASED; urgency=medium
 
-   * update to 1.12.3
+  * update to 1.12.3
 
-  -- Jessica Toscani <jessica@exoscale.ch>  Wed, Dec 12 16:11:42 CET 2018 +0200
+ -- Jessica Toscani <jessica@exoscale.ch>  Wed, 12 Dec 2018 16:11:42 +0200
 
 kubernetes (0.0-0) UNRELEASED; urgency=medium
 
   * create v1.10.2 for xenial.
 
  -- Jessica Toscani <jessica@exoscale.ch>  Fri, 4 May 2018 15:55:00 +0200
-
-
-
-
-
-

@@ -1,2 +1,3 @@
+etc/kubernetes
 var/lib/kubernetes/
 var/log/kubernetes/

@@ -1,0 +1,22 @@
+[Unit]
+Description="Kubernetes API Server"
+Requires=network-online.target
+After=network-online.target
+StartLimitIntervalSec=60
+StartLimitBurst=3
+
+[Service]
+User=kube
+Group=kube
+EnvironmentFile=/etc/default/kube-apiserver
+ExecCondition=/usr/bin/test -n "$KUBE_APISERVER_ENABLE"
+ExecStart=/usr/bin/kube-apiserver.launcher
+ExecReload=/bin/kill --signal HUP $MAINPID
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=60
+LimitNOFILE=65536
+LimitMEMLOCK=infinity
+
+[Install]
+WantedBy=multi-user.target

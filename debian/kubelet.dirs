@@ -1,2 +1,1 @@
-var/lib/kubernetes/
-var/log/kubernetes/
+etc/kubernetes/kubelet

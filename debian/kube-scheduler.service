@@ -1,0 +1,23 @@
+[Unit]
+Description="Kubernetes Scheduler"
+Requires=network-online.target
+After=network-online.target
+ConditionFileNotEmpty=/etc/kubernetes/scheduler/kubeconfig
+StartLimitIntervalSec=60
+StartLimitBurst=3
+
+[Service]
+User=kube
+Group=kube
+EnvironmentFile=/etc/default/kube-scheduler
+ExecCondition=/usr/bin/test -n "$KUBE_SCHEDULER_ENABLE"
+ExecStart=/usr/bin/kube-scheduler.launcher
+ExecReload=/bin/kill --signal HUP $MAINPID
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=60
+LimitNOFILE=65536
+LimitMEMLOCK=infinity
+
+[Install]
+WantedBy=multi-user.target

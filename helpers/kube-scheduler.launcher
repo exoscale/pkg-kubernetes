@@ -1,0 +1,97 @@
+#!/usr/bin/env bash
+
+## Scheduler service
+
+# Options
+# REF: https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/
+: ${VERBOSITY:=0}
+OPTIONS=
+
+# Flags
+# $ /usr/bin/kube-scheduler --help 2>/dev/null | sed -nE 's|^\s*--(\S+)\s{2,}.*$|  \1 \\|p' | sort
+for o in \
+  add-dir-header \
+  alsologtostderr \
+  authentication-skip-lookup \
+  authentication-tolerate-lookup-failure \
+  contention-profiling \
+  leader-elect \
+  logtostderr \
+  permit-port-sharing \
+  profiling \
+  skip-headers \
+  skip-log-headers \
+  use-legacy-policy-config \
+; do
+  e="${o^^}"; e="${e//-/_}"
+  [ -z "${!e}" ] && continue
+  OPTIONS="${OPTIONS} --${o}"
+done
+
+# Arguments
+# $ /usr/bin/kube-scheduler --help 2>/dev/null | sed -nE 's|^\s*--(\S+)\s\S.*$|  \1 \\|p' | sort
+for o in \
+  address \
+  algorithm-provider \
+  authentication-kubeconfig \
+  authentication-token-webhook-cache-ttl \
+  authorization-always-allow-paths \
+  authorization-kubeconfig \
+  authorization-webhook-cache-authorized-ttl \
+  authorization-webhook-cache-unauthorized-ttl \
+  bind-address \
+  cert-dir \
+  client-ca-file \
+  config \
+  feature-gates \
+  hard-pod-affinity-symmetric-weight \
+  http2-max-streams-per-connection \
+  kube-api-burst \
+  kube-api-content-type \
+  kube-api-qps \
+  kubeconfig \
+  leader-elect-lease-duration \
+  leader-elect-renew-deadline \
+  leader-elect-resource-lock \
+  leader-elect-resource-name \
+  leader-elect-resource-namespace \
+  leader-elect-retry-period \
+  lock-object-name \
+  lock-object-namespace \
+  log-backtrace-at \
+  log-dir \
+  log-file \
+  log-file-max-size \
+  log-flush-frequency \
+  logging-format \
+  master \
+  policy-config-file \
+  policy-configmap \
+  policy-configmap-namespace \
+  port \
+  requestheader-allowed-names \
+  requestheader-client-ca-file \
+  requestheader-extra-headers-prefix \
+  requestheader-group-headers \
+  requestheader-username-headers \
+  scheduler-name \
+  secure-port \
+  show-hidden-metrics-for-version \
+  stderrthreshold \
+  tls-cert-file \
+  tls-cipher-suites \
+  tls-min-version \
+  tls-private-key-file \
+  tls-sni-cert-key \
+  version \
+  vmodule \
+  write-config-to \
+; do
+  e="${o^^}"; e="${e//-/_}"
+  [ -z "${!e}" ] && continue
+  v="${!e}"
+  OPTIONS="${OPTIONS} --${o}=${v}"
+done
+
+# Exec
+exec /usr/bin/kube-scheduler ${OPTIONS} ${OTHER_OPTIONS} --v ${VERBOSITY}

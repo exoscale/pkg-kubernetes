@@ -1,0 +1,2 @@
+kubernetes/server/bin/kube-controller-manager usr/bin
+helpers/kube-controller-manager.launcher usr/bin

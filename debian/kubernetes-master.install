@@ -1,5 +1,0 @@
-server/bin/kubectl usr/bin
-server/bin/kube-apiserver usr/bin
-server/bin/kube-controller-manager usr/bin
-server/bin/kube-scheduler usr/bin
-bash_completion.d/kubectl etc/bash_completion.d

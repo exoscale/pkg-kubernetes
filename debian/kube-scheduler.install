@@ -1,0 +1,2 @@
+kubernetes/server/bin/kube-scheduler usr/bin
+helpers/kube-scheduler.launcher usr/bin

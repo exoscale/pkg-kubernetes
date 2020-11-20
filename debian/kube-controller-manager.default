@@ -1,0 +1,33 @@
+## Kubernetes Controller-Manager service configuration
+#  REF: https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/
+#  NOTE: use uppercased/underscored environment variable corresponding to any option;
+#        example given: --bind-address -> BIND_ADDRESS
+
+# Uncomment to enable
+#KUBE_CONTROLLER_MANAGER_ENABLE=true
+
+# Bind address/port
+BIND_ADDRESS='127.0.0.1'
+SECURE_PORT=10257
+
+# TLS/SSL
+TLS_MIN_VERSION='VersionTLS13'
+TLS_CERT_FILE='/etc/kubernetes/controller-manager/ssl/cert+chain.pem'
+TLS_PRIVATE_KEY_FILE='/etc/kubernetes/controller-manager/ssl/key.pem'
+ROOT_CA_FILE='/etc/kubernetes/ssl/api-cas.pem' \
+CLIENT_CA_FILE='/etc/kubernetes/controller-manager/ssl/client-cas.pem' \
+
+# Kubeconfig
+AUTHENTICATION_KUBECONFIG='/etc/kubernetes/controller-manager/kubeconfig'
+AUTHORIZATION_KUBECONFIG='/etc/kubernetes/controller-manager/kubeconfig'
+
+# Service account
+USE_SERVICE_ACCOUNT_CREDENTIALS=true
+SERVICE_ACCOUNT_PRIVATE_KEY_FILE='/etc/kubernetes/ssl/service-account-key.pem'
+
+# Features
+CONTROLLERS='*,tokencleaner'
+
+# Logging
+VERBOSITY=1
+
