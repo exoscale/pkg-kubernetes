@@ -1,4 +1,4 @@
-kubernetes (1.19.3-0+exo1) UNRELEASED; urgency=medium
+kubernetes (1.19.4-0+exo1) UNRELEASED; urgency=medium
 
   * debian: packaging v2
 
