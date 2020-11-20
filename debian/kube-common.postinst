@@ -1,11 +1,6 @@
 #!/bin/sh
 set -e
 
-NAME="kube"
-GROUP=$NAME
-USER=$NAME
-DATADIR="/var/lib/kubernetes"
-
 case "$1" in
   configure)
     # TODO: as per Debian Policy 4.5.0:
