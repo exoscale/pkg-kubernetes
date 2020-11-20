@@ -1,3 +1,9 @@
+kubernetes (1.19.4-0+exo4) UNRELEASED; urgency=low
+
+  * debian: FIX broken packages (kubectl <-> kubelet, kubernetes-master)
+
+ -- Cédric Dufour <cedric.dufour@exoscale.ch>  Fri, 20 Nov 2020 13:04:43 +0100
+
 kubernetes (1.19.4-0+exo1) UNRELEASED; urgency=medium
 
   * debian: packaging v2

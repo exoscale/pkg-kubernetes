@@ -32,7 +32,7 @@ Description: Kubernetes Node Components - kubelet
 
 Package: kubectl
 Architecture: any
-Conflicts: kubelet (<< 1.19.4-0+exo1), kubernetes-master (<< 1.19.4-0+exo1)
+Breaks: kubelet (<< 1.19.4-0+exo4~), kubernetes-master (<< 1.19.4-0+exo4~)
 Description: Kubernetes command-line client
 
 Package: kubernetes-master
