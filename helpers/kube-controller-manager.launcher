@@ -8,7 +8,27 @@
 OPTIONS=
 
 # Flags
-for o in $(/usr/bin/kube-controller-manager --help 2>/dev/null | sed -nE 's|^\s*--(\S+)\s{2,}.*$|\1|p') \
+# $ /usr/bin/kube-controller-manager --help 2>/dev/null | sed -nE 's|^\s*--(\S+)\s{2,}.*$|  \1 \\|p' | sort
+for o in \
+  add-dir-header \
+  allocate-node-cidrs \
+  alsologtostderr \
+  authentication-skip-lookup \
+  authentication-tolerate-lookup-failure \
+  configure-cloud-routes \
+  contention-profiling \
+  disable-attach-detach-reconcile-sync \
+  enable-dynamic-provisioning \
+  enable-garbage-collector \
+  enable-hostpath-provisioner \
+  enable-taint-manager \
+  leader-elect \
+  logtostderr \
+  permit-port-sharing \
+  profiling \
+  skip-headers \
+  skip-log-headers \
+  use-service-account-credentials \
 ; do
   e="${o^^}"; e="${e//-/_}"
   [ -z "${!e}" ] && continue
@@ -16,7 +36,124 @@ for o in $(/usr/bin/kube-controller-manager --help 2>/dev/null | sed -nE 's|^\s*
 done
 
 # Arguments
-for o in $(/usr/bin/kube-controller-manager --help 2>/dev/null | sed -nE 's|^\s*--(\S+)\s\S.*$|\1|p') \
+# $ /usr/bin/kube-controller-manager --help 2>/dev/null | sed -nE 's|^\s*--(\S+)\s\S.*$|  \1 \\|p' | sort
+for o in \
+  address \
+  attach-detach-reconcile-sync-period \
+  authentication-kubeconfig \
+  authentication-token-webhook-cache-ttl \
+  authorization-always-allow-paths \
+  authorization-kubeconfig \
+  authorization-webhook-cache-authorized-ttl \
+  authorization-webhook-cache-unauthorized-ttl \
+  bind-address \
+  cert-dir \
+  cidr-allocator-type \
+  client-ca-file \
+  cloud-config \
+  cloud-provider \
+  cluster-cidr \
+  cluster-name \
+  cluster-signing-cert-file \
+  cluster-signing-duration \
+  cluster-signing-key-file \
+  cluster-signing-kube-apiserver-client-cert-file \
+  cluster-signing-kube-apiserver-client-key-file \
+  cluster-signing-kubelet-client-cert-file \
+  cluster-signing-kubelet-client-key-file \
+  cluster-signing-kubelet-serving-cert-file \
+  cluster-signing-kubelet-serving-key-file \
+  cluster-signing-legacy-unknown-cert-file \
+  cluster-signing-legacy-unknown-key-file \
+  concurrent-deployment-syncs \
+  concurrent-endpoint-syncs \
+  concurrent-gc-syncs \
+  concurrent-namespace-syncs \
+  concurrent-replicaset-syncs \
+  concurrent-resource-quota-syncs \
+  concurrent-service-endpoint-syncs \
+  concurrent-service-syncs \
+  concurrent-serviceaccount-token-syncs \
+  concurrent-statefulset-syncs \
+  concurrent-ttl-after-finished-syncs \
+  concurrent_rc_syncs \
+  controller-start-interval \
+  controllers \
+  deployment-controller-sync-period \
+  endpoint-updates-batch-period \
+  endpointslice-updates-batch-period \
+  external-cloud-volume-plugin \
+  feature-gates \
+  flex-volume-plugin-dir \
+  horizontal-pod-autoscaler-cpu-initialization-period \
+  horizontal-pod-autoscaler-downscale-stabilization \
+  horizontal-pod-autoscaler-initial-readiness-delay \
+  horizontal-pod-autoscaler-sync-period \
+  horizontal-pod-autoscaler-tolerance \
+  http2-max-streams-per-connection \
+  kube-api-burst \
+  kube-api-content-type \
+  kube-api-qps \
+  kubeconfig \
+  large-cluster-size-threshold \
+  leader-elect-lease-duration \
+  leader-elect-renew-deadline \
+  leader-elect-resource-lock \
+  leader-elect-resource-name \
+  leader-elect-resource-namespace \
+  leader-elect-retry-period \
+  log-backtrace-at \
+  log-dir \
+  log-file \
+  log-file-max-size \
+  log-flush-frequency \
+  logging-format \
+  master \
+  max-endpoints-per-slice \
+  min-resync-period \
+  mirroring-concurrent-service-endpoint-syncs \
+  mirroring-endpointslice-updates-batch-period \
+  mirroring-max-endpoints-per-subset \
+  namespace-sync-period \
+  node-cidr-mask-size \
+  node-cidr-mask-size-ipv4 \
+  node-cidr-mask-size-ipv6 \
+  node-eviction-rate \
+  node-monitor-grace-period \
+  node-monitor-period \
+  node-startup-grace-period \
+  pod-eviction-timeout \
+  port \
+  pv-recycler-increment-timeout-nfs \
+  pv-recycler-minimum-timeout-hostpath \
+  pv-recycler-minimum-timeout-nfs \
+  pv-recycler-pod-template-filepath-hostpath \
+  pv-recycler-pod-template-filepath-nfs \
+  pv-recycler-timeout-increment-hostpath \
+  pvclaimbinder-sync-period \
+  requestheader-allowed-names \
+  requestheader-client-ca-file \
+  requestheader-extra-headers-prefix \
+  requestheader-group-headers \
+  requestheader-username-headers \
+  resource-quota-sync-period \
+  root-ca-file \
+  route-reconciliation-period \
+  secondary-node-eviction-rate \
+  secure-port \
+  service-account-private-key-file \
+  service-cluster-ip-range \
+  show-hidden-metrics-for-version \
+  stderrthreshold \
+  terminated-pod-gc-threshold \
+  tls-cert-file \
+  tls-cipher-suites \
+  tls-min-version \
+  tls-private-key-file \
+  tls-sni-cert-key \
+  unhealthy-zone-threshold \
+  version \
+  vmodule \
 ; do
   e="${o^^}"; e="${e//-/_}"
   [ -z "${!e}" ] && continue

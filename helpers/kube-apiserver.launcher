@@ -8,7 +8,29 @@
 OPTIONS=
 
 # Flags
-for o in $(/usr/bin/kube-apiserver --help 2>/dev/null | sed -nE 's|^\s*--(\S+)\s{2,}.*$|\1|p') \
+# $ /usr/bin/kube-apiserver --help 2>/dev/null | sed -nE 's|^\s*--(\S+)\s{2,}.*$|  \1 \\|p' | sort
+for o in \
+  add-dir-header \
+  allow-privileged \
+  alsologtostderr \
+  anonymous-auth \
+  audit-log-batch-throttle-enable \
+  audit-log-truncate-enabled \
+  audit-webhook-batch-throttle-enable \
+  audit-webhook-truncate-enabled \
+  contention-profiling \
+  enable-aggregator-routing \
+  enable-bootstrap-token-auth \
+  enable-garbage-collector \
+  enable-priority-and-fairness \
+  logtostderr \
+  permit-port-sharing \
+  profiling \
+  service-account-extend-token-expiration \
+  service-account-lookup \
+  skip-headers \
+  skip-log-headers \
+  watch-cache \
 ; do
   e="${o^^}"; e="${e//-/_}"
   [ -z "${!e}" ] && continue
@@ -16,7 +38,140 @@ for o in $(/usr/bin/kube-apiserver --help 2>/dev/null | sed -nE 's|^\s*--(\S+)\s
 done
 
 # Arguments
-for o in $(/usr/bin/kube-apiserver --help 2>/dev/null | sed -nE 's|^\s*--(\S+)\s\S.*$|\1|p') \
+# $ /usr/bin/kube-apiserver --help 2>/dev/null | sed -nE 's|^\s*--(\S+)\s\S.*$|  \1 \\|p' | sort
+for o in \
+  address \
+  admission-control \
+  admission-control-config-file \
+  advertise-address \
+  api-audiences \
+  apiserver-count \
+  audit-log-batch-buffer-size \
+  audit-log-batch-max-size \
+  audit-log-batch-max-wait \
+  audit-log-batch-throttle-burst \
+  audit-log-batch-throttle-qps \
+  audit-log-format \
+  audit-log-maxage \
+  audit-log-maxbackup \
+  audit-log-maxsize \
+  audit-log-mode \
+  audit-log-path \
+  audit-log-truncate-max-batch-size \
+  audit-log-truncate-max-event-size \
+  audit-log-version \
+  audit-policy-file \
+  audit-webhook-batch-buffer-size \
+  audit-webhook-batch-max-size \
+  audit-webhook-batch-max-wait \
+  audit-webhook-batch-throttle-burst \
+  audit-webhook-batch-throttle-qps \
+  audit-webhook-config-file \
+  audit-webhook-initial-backoff \
+  audit-webhook-mode \
+  audit-webhook-truncate-max-batch-size \
+  audit-webhook-truncate-max-event-size \
+  audit-webhook-version \
+  authentication-token-webhook-cache-ttl \
+  authentication-token-webhook-config-file \
+  authentication-token-webhook-version \
+  authorization-mode \
+  authorization-policy-file \
+  authorization-webhook-cache-authorized-ttl \
+  authorization-webhook-cache-unauthorized-ttl \
+  authorization-webhook-config-file \
+  authorization-webhook-version \
+  bind-address \
+  cert-dir \
+  client-ca-file \
+  cloud-config \
+  cloud-provider \
+  cloud-provider-gce-l7lb-src-cidrs \
+  cors-allowed-origins \
+  default-not-ready-toleration-seconds \
+  default-unreachable-toleration-seconds \
+  default-watch-cache-size \
+  delete-collection-workers \
+  disable-admission-plugins \
+  egress-selector-config-file \
+  enable-admission-plugins \
+  encryption-provider-config \
+  endpoint-reconciler-type \
+  etcd-cafile \
+  etcd-certfile \
+  etcd-compaction-interval \
+  etcd-count-metric-poll-period \
+  etcd-db-metric-poll-interval \
+  etcd-keyfile \
+  etcd-prefix \
+  etcd-servers \
+  etcd-servers-overrides \
+  event-ttl \
+  external-hostname \
+  feature-gates \
+  goaway-chance \
+  http2-max-streams-per-connection \
+  insecure-bind-address \
+  insecure-port \
+  kubelet-certificate-authority \
+  kubelet-client-certificate \
+  kubelet-client-key \
+  kubelet-preferred-address-types \
+  kubelet-timeout \
+  kubernetes-service-node-port \
+  livez-grace-period \
+  log-backtrace-at \
+  log-dir \
+  log-file \
+  log-file-max-size \
+  log-flush-frequency \
+  logging-format \
+  master-service-namespace \
+  max-connection-bytes-per-sec \
+  max-mutating-requests-inflight \
+  max-requests-inflight \
+  min-request-timeout \
+  oidc-ca-file \
+  oidc-client-id \
+  oidc-groups-claim \
+  oidc-groups-prefix \
+  oidc-issuer-url \
+  oidc-required-claim \
+  oidc-signing-algs \
+  oidc-username-claim \
+  oidc-username-prefix \
+  port \
+  proxy-client-cert-file \
+  proxy-client-key-file \
+  request-timeout \
+  requestheader-allowed-names \
+  requestheader-client-ca-file \
+  requestheader-extra-headers-prefix \
+  requestheader-group-headers \
+  requestheader-username-headers \
+  runtime-config \
+  secure-port \
+  service-account-issuer \
+  service-account-jwks-uri \
+  service-account-key-file \
+  service-account-max-token-expiration \
+  service-account-signing-key-file \
+  service-cluster-ip-range \
+  service-node-port-range \
+  show-hidden-metrics-for-version \
+  shutdown-delay-duration \
+  stderrthreshold \
+  storage-backend \
+  storage-media-type \
+  tls-cert-file \
+  tls-cipher-suites \
+  tls-min-version \
+  tls-private-key-file \
+  tls-sni-cert-key \
+  token-auth-file \
+  version \
+  vmodule \
+  watch-cache-sizes \
 ; do
   e="${o^^}"; e="${e//-/_}"
   [ -z "${!e}" ] && continue
