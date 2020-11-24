@@ -1,3 +1,9 @@
+kubernetes (1.19.4-0+exo6) UNRELEASED; urgency=low
+
+  * debian: FIX broken packages (kube-{apiserver,controller-manager,scheduler} <-> kubernetes-master)
+
+ -- Cédric Dufour <cedric.dufour@exoscale.ch>  Tue, 24 Nov 2020 17:24:51 +0100
+
 kubernetes (1.19.4-0+exo5) UNRELEASED; urgency=low
 
   * debian: FIX services configuration and ADD 'kubeadm' package
