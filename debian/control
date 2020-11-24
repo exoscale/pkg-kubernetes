@@ -13,16 +13,19 @@ Description: Kubernetes - common resources
 Package: kube-apiserver
 Architecture: any
 Depends: kube-common (= ${binary:Version})
+Breaks: kubernetes-master (<< 1.19.4-0+exo4~)
 Description: Kubernetes Master Components - API Server
 
 Package: kube-controller-manager
 Architecture: any
 Depends: kube-common (= ${binary:Version})
+Breaks: kubernetes-master (<< 1.19.4-0+exo4~)
 Description: Kubernetes Master Components - Controller-Manager
 
 Package: kube-scheduler
 Architecture: any
 Depends: kube-common (= ${binary:Version})
+Breaks: kubernetes-master (<< 1.19.4-0+exo4~)
 Description: Kubernetes Master Components - Scheduler
 
 Package: kubelet
