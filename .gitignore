@@ -17,6 +17,7 @@ semantic.cache
 /debian/kube-scheduler
 /debian/kubelet
 /debian/kubectl
+/debian/kubeadm
 /debian/kubernetes-master
 # ... built resources
 /download

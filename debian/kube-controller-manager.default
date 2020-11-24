@@ -14,8 +14,8 @@ SECURE_PORT=10257
 TLS_MIN_VERSION='VersionTLS13'
 TLS_CERT_FILE='/etc/kubernetes/controller-manager/ssl/cert+chain.pem'
 TLS_PRIVATE_KEY_FILE='/etc/kubernetes/controller-manager/ssl/key.pem'
-ROOT_CA_FILE='/etc/kubernetes/ssl/api-cas.pem' \
-CLIENT_CA_FILE='/etc/kubernetes/controller-manager/ssl/client-cas.pem' \
+ROOT_CA_FILE='/etc/kubernetes/ssl/api-cas.pem'
+CLIENT_CA_FILE='/etc/kubernetes/controller-manager/ssl/client-cas.pem'
 
 # Kubeconfig
 AUTHENTICATION_KUBECONFIG='/etc/kubernetes/controller-manager/kubeconfig'
@@ -23,7 +23,7 @@ AUTHORIZATION_KUBECONFIG='/etc/kubernetes/controller-manager/kubeconfig'
 
 # Service account
 USE_SERVICE_ACCOUNT_CREDENTIALS=true
-SERVICE_ACCOUNT_PRIVATE_KEY_FILE='/etc/kubernetes/ssl/service-account-key.pem'
+SERVICE_ACCOUNT_PRIVATE_KEY_FILE='/etc/kubernetes/service-account-key.pem'
 
 # Features
 CONTROLLERS='*,tokencleaner'

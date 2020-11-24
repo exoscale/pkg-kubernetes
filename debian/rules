@@ -18,7 +18,8 @@ DOWNLOAD_INSTALLER := ./download/cluster/get-kube-binaries.sh
 $(DOWNLOAD_INSTALLER):
 	mkdir -p ./download
 	wget --progress=dot:mega "$(TARBALL_URL)" -O "./download/$(TARBALL)"
-	tar -C ./download --strip-components=1 -xf "./download/$(TARBALL)"
+	tar -C ./download --strip-components=1 -xf "./download/$(TARBALL)" \
+	  --wildcards '*/version' '*/cluster/get-kube-binaries.sh'
 
 DOWNLOAD_TARBALL := ./download/server/kubernetes-server-linux-$(DEB_BUILD_ARCH).tar.gz
 $(DOWNLOAD_TARBALL): $(DOWNLOAD_INSTALLER)
@@ -28,7 +29,7 @@ $(DOWNLOAD_TARBALL): $(DOWNLOAD_INSTALLER)
 	${DOWNLOAD_INSTALLER}
 
 override_dh_auto_build: $(DOWNLOAD_TARBALL)
-	tar -xf "${DOWNLOAD_TARBALL}"
+	tar -xf "${DOWNLOAD_TARBALL}" --wildcards '*/server/bin/*'
 	kubernetes/server/bin/kubectl completion bash > kubectl.bash_completion
 
 # Restarting any Kubernetes component is something we want to do manually
