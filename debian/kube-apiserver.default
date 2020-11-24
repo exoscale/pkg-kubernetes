@@ -31,15 +31,19 @@ PROXY_CLIENT_CERT_FILE='/etc/kubernetes/apiserver/ssl/cert.pem'
 PROXY_CLIENT_KEY_FILE='/etc/kubernetes/apiserver/ssl/key.pem'
 
 # Kubeconfig
-AUTHENTICATION_KUBECONFIG='/etc/kubernetes/apiserver/kubeconfig'
-AUTHORIZATION_KUBECONFIG='/etc/kubernetes/apiserver/kubeconfig'
+#ADMISSION_CONTROL_CONFIG_FILE='/etc/kubernetes/apiserver/admission.kubeconfig'
+#AUTHENTICATION_TOKEN_WEBHOOK_CONFIG_FILE='/etc/kubernetes/apiserver/webhook.kubeconfig'
+#AUTHORIZATION_WEBHOOK_CONFIG_FILE='/etc/kubernetes/apiserver/webhook.kubeconfig'
+#EGRESS_SELECTOR_CONFIG_FILE='/etc/kubernetes/apiserver/egress.kubeconfig'
 
 # ETCD
 ETCD_PREFIX='/kubernetes'
 ETCD_SERVERS='https://127.0.0.1:2379'
 
 # Service account
-SERVICE_ACCOUNT_KEY_FILE='/etc/kubernetes/ssl/service-account-key.pem'
+SERVICE_ACCOUNT_SIGNING_KEY_FILE='/etc/kubernetes/service-account-key.pem'
+SERVICE_ACCOUNT_KEY_FILE='/etc/kubernetes/service-account-key.pem'
+SERVICE_ACCOUNT_ISSUER='default.svc.kube.example.org'
 
 # Features
 RUNTIME_CONFIG='api/all=true'

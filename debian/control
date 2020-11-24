@@ -35,10 +35,14 @@ Architecture: any
 Breaks: kubelet (<< 1.19.4-0+exo4~), kubernetes-master (<< 1.19.4-0+exo4~)
 Description: Kubernetes command-line client
 
+Package: kubeadm
+Architecture: any
+Description: Kubernetes administration toolbox
+
 Package: kubernetes-master
 Architecture: all
 Depends: kube-apiserver (= ${binary:Version}),
          kube-controller-manager (= ${binary:Version}),
          kube-scheduler (= ${binary:Version}),
          kubectl (= ${binary:Version})
-Description: Kubernetes Master Components - Full Control Plane
+Description: Kubernetes Master Components - Full Control Plane (metapackage)
