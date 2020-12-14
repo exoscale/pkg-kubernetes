@@ -13,19 +13,19 @@ Description: Kubernetes - common resources
 Package: kube-apiserver
 Architecture: any
 Depends: kube-common (= ${binary:Version})
-Breaks: kubernetes-master (<< 1.19.4-0+exo4~)
+Breaks: kubernetes-master (<< 1.20.0-0+exo1~)
 Description: Kubernetes Master Components - API Server
 
 Package: kube-controller-manager
 Architecture: any
 Depends: kube-common (= ${binary:Version})
-Breaks: kubernetes-master (<< 1.19.4-0+exo4~)
+Breaks: kubernetes-master (<< 1.20.0-0+exo1~)
 Description: Kubernetes Master Components - Controller-Manager
 
 Package: kube-scheduler
 Architecture: any
 Depends: kube-common (= ${binary:Version})
-Breaks: kubernetes-master (<< 1.19.4-0+exo4~)
+Breaks: kubernetes-master (<< 1.20.0-0+exo1~)
 Description: Kubernetes Master Components - Scheduler
 
 Package: kubelet
@@ -35,7 +35,7 @@ Description: Kubernetes Node Components - kubelet
 
 Package: kubectl
 Architecture: any
-Breaks: kubelet (<< 1.19.4-0+exo4~), kubernetes-master (<< 1.19.4-0+exo4~)
+Breaks: kubelet (<< 1.20.0-0+exo1~), kubernetes-master (<< 1.20.0-0+exo1~)
 Description: Kubernetes command-line client
 
 Package: kubeadm
