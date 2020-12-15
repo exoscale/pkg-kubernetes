@@ -1,3 +1,9 @@
+kubernetes (1.20.0-0+exo1) UNRELEASED; urgency=low
+
+  * Package 1.20.0
+
+ -- Sebastian Krohn <sebastian.krohn@exoscale.ch>  Tue, 14 Dec 2020 17:31:31 +0100
+
 kubernetes (1.19.4-0+exo6) UNRELEASED; urgency=low
 
   * debian: FIX broken packages (kube-{apiserver,controller-manager,scheduler} <-> kubernetes-master)
