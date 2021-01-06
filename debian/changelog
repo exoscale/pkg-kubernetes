@@ -1,3 +1,10 @@
+kubernetes (1.20.1-0+exo1) UNRELEASED; urgency=low
+
+  * New upstream release: 1.20.1
+    REF: https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.20.md#changelog-since-v1200
+
+ -- Cédric Dufour <cedric.dufour@exoscale.ch>  Mon, 04 Jan 2021 10:43:44 +0100
+
 kubernetes (1.20.0-0+exo1) UNRELEASED; urgency=low
 
   * Package 1.20.0
