@@ -1,3 +1,9 @@
+kubernetes (1.20.2-0+exo2) UNRELEASED; urgency=low
+
+  * Remove logrotate from kube-common
+
+ -- Sebastian Krohn <sebastian.krohn@exoscale.ch>  Thu, 04 Feb 2021 13:01:59 +0100
+
 kubernetes (1.20.2-0+exo1) UNRELEASED; urgency=low
 
   * New upstream release: 1.20.2
