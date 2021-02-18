@@ -1,3 +1,10 @@
+kubernetes (1.20.3-0+exo1) UNRELEASED; urgency=low
+
+  * New upstream release: 1.20.3
+    REF: https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.20.md#changelog-since-v1202
+
+ -- Cédric Dufour <cedric.dufour@exoscale.ch>  Thu, 18 Feb 2021 09:18:44 +0100
+
 kubernetes (1.20.2-0+exo3) UNRELEASED; urgency=low
 
   * Add 'socat' as 'kubectl' dependency
