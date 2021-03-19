@@ -1,3 +1,9 @@
+kubernetes (1.20.5-0+exo1) UNRELEASED; urgency=medium
+
+  * New upstream release: 1.20.5, https://github.com/kubernetes/kubernetes/releases/tag/v1.20.5 
+
+ -- Alexandros Afentoulis <alexandros.afentoulis@exoscale.ch>  Fri, 19 Mar 2021 11:47:44 +0200
+
 kubernetes (1.20.3-0+exo1) UNRELEASED; urgency=low
 
   * New upstream release: 1.20.3
