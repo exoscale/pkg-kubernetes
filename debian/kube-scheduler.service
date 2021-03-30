@@ -12,7 +12,6 @@ Group=kube
 EnvironmentFile=/etc/default/kube-scheduler
 ExecCondition=/usr/bin/test -n "$KUBE_SCHEDULER_ENABLE"
 ExecStart=/usr/bin/kube-scheduler.launcher
-ExecReload=/bin/kill --signal HUP $MAINPID
 Restart=on-failure
 RestartSec=5
 TimeoutStopSec=60

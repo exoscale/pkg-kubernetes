@@ -10,7 +10,6 @@ StartLimitBurst=3
 EnvironmentFile=/etc/default/kubelet
 ExecCondition=/usr/bin/test -n "$KUBELET_ENABLE"
 ExecStart=/usr/bin/kubelet.launcher
-ExecReload=/bin/kill --signal HUP $MAINPID
 Restart=on-failure
 RestartSec=5
 TimeoutStopSec=60
