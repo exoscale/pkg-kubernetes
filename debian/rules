@@ -8,7 +8,8 @@ export EXOSCALE_VERSION := $(DEB_VERSION)~$(OS_CODENAME)
 
 # Source
 TARBALL = kubernetes.tar.gz
-TARBALL_VERSION = $(DEB_VERSION_UPSTREAM)
+#TARBALL_VERSION = $(DEB_VERSION_UPSTREAM)
+TARBALL_VERSION=1.21.0-rc.0
 TARBALL_URL = https://github.com/kubernetes/kubernetes/releases/download/v$(TARBALL_VERSION)/$(TARBALL)
 
 %:
