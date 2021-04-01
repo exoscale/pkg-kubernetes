@@ -1,4 +1,12 @@
+kubernetes (1.21.0~rc.0+exo1) UNRELEASED; urgency=medium
+
+  * New upstream release 1.21.0-rc.0
+    REF: https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.21.md
+
+ -- Jessica <jessica@exoscale.ch>  Wed, 31 Mar 2021 14:24:33 +0200
+
 kubernetes (1.20.5-0+exo2) UNRELEASED; urgency=medium
+
   * Remove service ExecReload as it seems to have no effect
 
  -- Antoine <antoine@antoine-exo>  Tue, 30 Mar 2021 15:02:39 +0200
