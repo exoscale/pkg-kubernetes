@@ -1,3 +1,9 @@
+kubernetes (1.21.0~rc.0+exo2) UNRELEASED; urgency=medium
+
+  * Kubelet service: Remove docker dependency
+
+ -- Jessica <jessica@exoscale.ch>  Thu, 08 Apr 2021 16:47:38 +0200
+
 kubernetes (1.21.0~rc.0+exo1) UNRELEASED; urgency=medium
 
   * New upstream release 1.21.0-rc.0
