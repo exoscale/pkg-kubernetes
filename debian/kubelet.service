@@ -1,7 +1,7 @@
 [Unit]
 Description="Kubernetes Kubelet"
-Requires=network-online.target docker.service
-After=network-online.target docker.service
+Requires=network-online.target containerd.service
+After=network-online.target containerd.service
 ConditionFileNotEmpty=/etc/kubernetes/kubelet/config.yaml
 StartLimitIntervalSec=60
 StartLimitBurst=3
