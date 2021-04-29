@@ -1,3 +1,9 @@
+kubernetes (1.21.0-0+exo2) UNRELEASED; urgency=low
+
+  * kupe-apiserver.service: bump TimeoutStopSec to 180s
+
+ -- Cédric Dufour <cedric.dufour@exoscale.ch>  Thu, 29 Apr 2021 16:43:19 +0200
+
 kubernetes (1.21.0-0+exo1) UNRELEASED; urgency=medium
 
   * New upstream release 1.21.0
